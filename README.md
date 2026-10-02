@@ -177,16 +177,19 @@ All structural binary layout invariants are formally modeled and verified in the
 ```bash
 cd /home/ashley/slabio
 
-# 1. Run Master Suite (6 SMT Theorems + 6 Integration Tests in 0.25s):
+# 1. Run Master Suite (SMT Theorems + Integration Tests + Live MinIO Wire Test):
 .venv/bin/python prove_100_slabio.py
 
-# 2. Run Large-Scale Financial & Performance Benchmark (50,000 objects):
+# 2. Run Live MinIO S3-Compatible Protocol Verification over HTTP:
+.venv/bin/python test_minio_live.py http://127.0.0.1:9005
+
+# 3. Run Large-Scale Financial & Performance Benchmark (50,000 objects):
 .venv/bin/python benchmark_s3_bills.py
 
-# 3. Run Formal Z3 SMT Verification:
+# 4. Run Formal Z3 SMT Invariant Verification:
 .venv/bin/python verify_slabio.py
 
-# 4. Run Integration Tests:
+# 5. Run Local Storage Integration Tests:
 .venv/bin/python test_slabio_integration.py
 ```
 
